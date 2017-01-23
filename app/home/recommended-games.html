@@ -1,0 +1,22 @@
+<link href="home/top-games.css" rel="stylesheet">
+<div class="container">
+    <h3><kbd>Recommended for you from all users</kbd></h3><br/>
+    <div class="row">
+        <div class="row">
+        </div>
+        <div class="carousel slide hidden-xs" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="row" ng-controller="HomeCtrl"
+                         ng-init="principal.isAuthenticated() ? recommendedGames() : 0">
+                        <div class="col-md-4" ng-repeat="sampleGame in recGames">
+                            <div class="col-item">
+                                <div ng-include="'home/top-game.html'"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

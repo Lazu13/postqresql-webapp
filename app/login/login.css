@@ -1,0 +1,11 @@
+.container.login-container{
+    padding: 5% 20%;
+}
+
+input.ng-invalid {
+    border: 1px red solid;
+}
+form.submitted .ng-invalid
+{
+    border: 1px solid #f00;
+}

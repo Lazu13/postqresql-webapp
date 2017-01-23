@@ -1,0 +1,31 @@
+<link href="admin/admin.css" rel="stylesheet">
+
+<div class="register-container container" ng-app="myApp.admin" ng-controller="AdminCtrl">
+    <form name='delete_Game' class="form-horizontal">
+        <fieldset>
+            <div id="legend">
+                <legend class=""><h3>Delete Game</h3></legend>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="id">ID</label>
+                <div class="controls">
+                    <input type="number" id="id" name="id" placeholder="" ng-model="deleteGame.id" required
+                           class="form-control input-lg">
+                    <p class="help-block">deleteGame ID</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <span ng-show="delete_Game.$invalid" class="label label-danger">Required</span>
+                    <button class="btn btn-success" ng-click="deleteGame()"
+                            ng-disabled="delete_Game.$invalid || delete_Game.$pending ">Delete game
+                    </button>
+                </div>
+            </div>
+
+            <br/>
+        </fieldset>
+    </form>
+</div>
+

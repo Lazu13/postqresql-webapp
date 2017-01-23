@@ -1,0 +1,48 @@
+<link href="games/games.css" rel="stylesheet">
+<link href="home/top-games.css" rel="stylesheet">
+
+<div ng-app="myApp.user_profile" ng-controller="UserProfileCtrl">
+    <div class="games-container container" ng-init="getUser()">
+        <h3><kbd>Your profile</kbd></h3><br/>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <div class="category col-md-6">
+                        <h4>Your username:</h4>
+                        <h4>Your email:</h4>
+                    </div>
+                    <div class="rating col-md-6">
+                        <h4 class="category-text-color">{{myself.username || 'notDefined'}}</h4>
+                        <h4 class="category-text-color">{{myself.email || 'notDefined'}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="games-container container">
+        <div class="panel panel-borderless">
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="rating col-md-4">
+                        <button ui-sref="friends" type="button" class="btn btn-default"
+                                aria-label="Left Align">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"> Friends</span>
+                        </button>
+                    </div>
+                    <div class="rating col-md-4">
+                        <button ui-sref="game_lib" type="button" class="btn btn-default"
+                                aria-label="Left Align">
+                            <span class="glyphicon glyphicon-star" aria-hidden="true"> Games</span>
+                        </button>
+                    </div>
+                    <div class="rating col-md-4">
+                        <button ui-sref="favs({ personId: myself.id })" type="button" class="btn btn-default"
+                                aria-label="Left Align">
+                            <span class="glyphicon glyphicon-heart" aria-hidden="true"> Favourites</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

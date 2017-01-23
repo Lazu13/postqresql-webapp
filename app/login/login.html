@@ -1,0 +1,42 @@
+<link href="login/login.css" rel="stylesheet">
+
+<div ng-app="myApp.login" class="login-container container" ng-controller="LoginCtrl">
+    <form name='login' class="form-horizontal">
+        <fieldset>
+
+            <div id="legend">
+                <legend class=""><h3>Login</h3></legend>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="username">Username</label>
+                <div class="controls">
+                    <input type="text" id="username" name="username" placeholder="" ng-model="user.name" required
+                           class="form-control input-lg" no-spaces>
+                    <p class="help-block">Username can contain any letters or numbers, without spaces </p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="password">Password</label>
+                <div class="controls">
+                    <input type="password" id="password" name="password" placeholder="" ng-model="user.password"
+                           ng-minlength='6' required class="form-control input-lg">
+                    <p class="help-block">Password should be at least 6 characters</p>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <span ng-show="login.$invalid" class="label label-danger">Required</span>
+                    <button class="btn btn-success" ng-click="goto()"
+                            ng-disabled="login.$invalid || login.$pending ">Log in!
+                    </button>
+
+                </div>
+            </div>
+            <br/>
+
+        </fieldset>
+    </form>
+</div>
+

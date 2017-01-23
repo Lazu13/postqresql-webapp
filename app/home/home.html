@@ -1,0 +1,9 @@
+<div ng-include="'home/top-games.html'"></div>
+
+<div ng-app="myApp" ng-controller="MyAppCtrl">
+    <div ng-show="principal.isAuthenticated()">
+        <div ng-include="'home/recommended-games.html'"></div>
+        <div ng-include="'home/recommended-games-friends.html'"></div>
+    </div>
+</div>
+

@@ -1,0 +1,14 @@
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    height: 50px;
+    vertical-align: top;
+}
+
+input, select, textarea{
+    color: black;
+}

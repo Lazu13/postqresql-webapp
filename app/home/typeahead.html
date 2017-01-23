@@ -1,0 +1,5 @@
+<div ng-app="myApp.typeahead" ng-controller="TypeaheadCtrl">
+    <input type="text" ng-model="asyncSelected" typeahead-on-select="goOn($item)"
+           uib-typeahead="value as value.title for value in getValues($viewValue) | limitTo: 5"
+           typeahead-min-length="3" typeahead-wait-ms="500">
+</div>
