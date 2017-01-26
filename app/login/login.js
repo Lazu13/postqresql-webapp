@@ -4,8 +4,7 @@ angular.module('myApp.login', [
     'ui.validate',
     'ui.router',
     'ngCookies',
-    'myApp',
-    'myApp.register'
+    'myApp'
 ])
 
     .controller('LoginCtrl', function ($scope, $rootScope, $state, $http, $cookies) {
@@ -22,33 +21,25 @@ angular.module('myApp.login', [
                 }
             };
 
-            $http.post('http://127.0.0.1:8000/users/login',
+            $http.post('http://127.0.0.1:3000/login',
                 dataToSend,
                 config
             )
                 .success(function (data) {
-                    $cookies.put('Authorization', data.token);
-                    $http.get('http://127.0.0.1:8000/user', {
-                        headers: {
-                            'Authorization': 'token ' + $cookies.get('Authorization'),
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                        .success(function (data) {
-                            if (data.is_superuser)
-                                $cookies.put('Roles', "admin");
-                            else
-                                $cookies.put('Roles', "user");
-                        })
-
-                        .then(function () {
-                            alert("Logged in");
-                            if ($rootScope.returnToState != undefined)
-                                $state.go($rootScope.returnToState, $rootScope.returnToStateParams, {reload: true});
-                            else
-                                $state.go('home', {});
-                        });
+                    console.log(data);
+                    if (data.length > 0) {
+                        $cookies.put('Roles', data[0].nazwa_uzytkownika.toString());
+                        $cookies.put('Authorization', 'true');
+                        alert("Logged in");
+                        if ($rootScope.returnToState != undefined)
+                            $state.go($rootScope.returnToState, $rootScope.returnToStateParams, {reload: true});
+                        else
+                            $state.go('home', {});
+                    }
+                    else
+                        alert("Not logged in, there is not such a user!");
                 })
+
                 .error(function (err) {
                     $cookies.remove('Authorization');
                     alert("Not logged in: " + err);

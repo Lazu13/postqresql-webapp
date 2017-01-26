@@ -1,41 +1,29 @@
-<link href="home/top-games.css" rel="stylesheet">
-
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid tab-pane fade in active">
         <div class="navbar-header">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a class="navbar-brand" ui-sref="home" ui-sref-active="active">Cocoamphoactate</a>
+                    <a class="navbar-brand" ui-sref="home" ui-sref-active="active">Policja</a>
                 </li>
             </ul>
         </div>
         <ul class="nav navbar-nav">
-            <li><a id="games" ui-sref="games" ui-sref-active="active">Games</a></li></ul>
-        <ul class="nav navbar-nav navbar-default-">
-            <li>
-                <a>
-                    <div ng-app="myApp.typeahead" ng-controller="TypeaheadCtrl">
-                        <select ng-options="selection as selection.name for selection in data"
-                                ng-init="selectedValue = data[0].id"
-                                ng-model="selectedValue" ng-change="changeSelection()">
-                            <option value="" ng-disabled="true">Option...</option>
-                        </select>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <div ng-include="'home/typeahead.html'"></div>
-                </a>
-            </li>
+            <li><a id="dodaj" ui-sref="games" ui-sref-active="active">Dodaj</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a id="usun" ui-sref="games" ui-sref-active="active">Usuń</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a id="przegladaj" ui-sref="games" ui-sref-active="active">Przeglądaj</a></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><a id="raporty" ui-sref="games" ui-sref-active="active">Raporty</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a id='notify' ui-sref="notification" ui-sref-active="active"><span
-                    class="glyphicon glyphicon-envelope"></span> Invites</a></li>
-            <li><a id='register' ui-sref="user_profile" ui-sref-active="active"><span
-                    class="glyphicon glyphicon-user"></span> Profile</a></li>
-            <li><a id='logout' ui-sref="logout" ui-sref-active="active"><span
-                    class="glyphicon glyphicon-log-out"></span>
+            <li>
+                <p id="confirmationP"></p>
+            </li>
+            <li><a id='logout' ui-sref="logout" ui-sref-active="active"><span class="glyphicon glyphicon-log-out"></span>
                 Logout</a></li>
         </ul>
     </div>

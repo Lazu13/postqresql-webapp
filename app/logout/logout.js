@@ -4,8 +4,7 @@ angular.module('myApp.logout', [
     'ui.validate',
     'ui.router',
     'ngCookies',
-    'myApp',
-    'myApp.register'
+    'myApp'
 ])
 
     .controller('LogoutCtrl', function ($scope, $state, $http, $cookies) {

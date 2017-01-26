@@ -1,16 +1,17 @@
-<link href="home/top-games.css" rel="stylesheet">
+<link href="home/top.css" rel="stylesheet">
 <div class="container">
-    <h3><kbd>Top three games</kbd></h3><br/>
+    <h3><kbd>Najbardziej zapracowani policjanci</kbd></h3><br/>
     <div class="row">
         <div class="row">
         </div>
         <div class="carousel slide hidden-xs" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item active">
-                    <div class="row" ng-controller="HomeCtrl" ng-init="topGames()">
-                        <div class="col-md-4" ng-repeat="sampleGame in games">
+                    <div class="row" ng-controller="HomeCtrl"
+                         ng-init="getPolicemen()">
+                        <div class="col-md-4" ng-repeat="sample in policemen">
                             <div class="col-item">
-                                <div ng-include="'home/top-game.html'"></div>
+                                <div ng-include="'home/top.html'"></div>
                             </div>
                         </div>
                     </div>

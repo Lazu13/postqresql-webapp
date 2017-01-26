@@ -6,7 +6,6 @@ angular.module('myApp', [
     'ngCookies',
     'myApp.home',
     'myApp.admin',
-    'myApp.register',
     'myApp.login',
     'myApp.logout',
     'myApp.notification',
@@ -18,7 +17,6 @@ angular.module('myApp', [
     'myApp.game_lib',
     'myApp.friends',
     'myApp.person',
-    'myApp.typeahead',
     'angular-input-stars',
     'ui.validate'
 ])
@@ -282,13 +280,6 @@ angular.module('myApp', [
         };
 
 
-        var register = {
-            name: 'register',
-            url: '/register',
-            templateUrl: 'register/register.html',
-            controller: 'RegisterCtrl'
-        };
-
         var login = {
             name: 'login',
             url: '/login',
@@ -340,7 +331,6 @@ angular.module('myApp', [
         $stateProvider.state(favs);
         $stateProvider.state(game_lib);
 
-        $stateProvider.state(register);
         $stateProvider.state(login);
         $stateProvider.state(logout);
         $stateProvider.state(notification);

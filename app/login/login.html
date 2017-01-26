@@ -8,26 +8,26 @@
                 <legend class=""><h3>Login</h3></legend>
             </div>
             <div class="control-group">
-                <label class="control-label" for="username">Username</label>
+                <label class="control-label" for="username">Nazwa użytkownika</label>
                 <div class="controls">
                     <input type="text" id="username" name="username" placeholder="" ng-model="user.name" required
                            class="form-control input-lg" no-spaces>
-                    <p class="help-block">Username can contain any letters or numbers, without spaces </p>
+                    <p class="help-block">Nazwa użytkownika nie może zawierać spacji</p>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="password">Password</label>
+                <label class="control-label" for="password">Hasło</label>
                 <div class="controls">
                     <input type="password" id="password" name="password" placeholder="" ng-model="user.password"
-                           ng-minlength='6' required class="form-control input-lg">
-                    <p class="help-block">Password should be at least 6 characters</p>
+                           ng-minlength='5' required class="form-control input-lg">
+                    <p class="help-block">Hasło powinno zawierać conajmniej 5 znaków</p>
                 </div>
             </div>
 
             <div class="control-group">
                 <div class="controls">
-                    <span ng-show="login.$invalid" class="label label-danger">Required</span>
+                    <span ng-show="login.$invalid" class="label label-danger">Wymagane</span>
                     <button class="btn btn-success" ng-click="goto()"
                             ng-disabled="login.$invalid || login.$pending ">Log in!
                     </button>

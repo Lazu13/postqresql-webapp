@@ -16,8 +16,8 @@ angular.module('myApp.home', [
             return input;
         };
 
-        $scope.topGames = function () {
-            $http.get('http://127.0.0.1:3000/', {
+        $scope.getCrimes = function () {
+            $http.get('http://127.0.0.1:3000/top_three/crimes', {
                 headers: {
                     'Authorization': 'token ' + $cookies.get('Authorization'),
                     'Content-Type': 'application/json'
@@ -25,79 +25,45 @@ angular.module('myApp.home', [
             })
                 .success(function (data) {
                     console.log(data);
-                    data.forEach(function (item) {
-                        item.score = Math.round(item.score);
-                    });
-                    $scope.games = data;
+                    $scope.crimes = data;
                 })
 
                 .error(function () {
-                    $scope.games = [];
+                    $scope.crimes = [];
                 });
         };
 
-        $scope.recommendedGames = function () {
-            $http.get('http://127.0.0.1:8000/users/recommend/type/' + '0', {
+        $scope.getOffenses = function () {
+            $http.get('http://127.0.0.1:3000/top_three/offenses', {
                 headers: {
                     'Authorization': 'token ' + $cookies.get('Authorization'),
                     'Content-Type': 'application/json'
                 }
             })
                 .success(function (data) {
-                    data.forEach(function (item) {
-                        item.score = Math.round(item.score);
-                    });
-                    $scope.recGames = data;
+                    console.log(data);
+                    $scope.offenses = data;
                 })
 
                 .error(function () {
-                    $scope.recGames = [];
+                    $scope.offenses = [];
                 });
         };
 
-        $scope.recommendedGamesFriends = function () {
-            return $http.get('http://127.0.0.1:8000/users/recommend/type/' + '1', {
+        $scope.getPolicemen = function () {
+            return $http.get('http://127.0.0.1:3000/top_three/policemen', {
                 headers: {
                     'Authorization': 'token ' + $cookies.get('Authorization'),
                     'Content-Type': 'application/json'
                 }
             })
                 .success(function (data) {
-                    data.forEach(function (item) {
-                        item.score = Math.round(item.score);
-                    });
-                    $scope.recGamesFriends = data
+                    console.log(data);
+                    $scope.policemen = data
                 })
 
                 .error(function () {
-                    $scope.recGamesFriends = [];
+                    $scope.policemen = [];
                 });
         };
-
-        $scope.addToGameLib = function (id) {
-            var config = {
-                headers: {
-                    'Authorization': 'token ' + $cookies.get('Authorization'),
-                    'Content-Type': 'application/json'
-                }
-            };
-
-            var friendToAdd = {
-                "game": id
-            };
-
-            $http.post('http://127.0.0.1:8000/gamelib',
-                friendToAdd,
-                config
-            )
-                .success(function () {
-                    alert("You have added new game to your game library");
-                    $state.go($state.current, {}, {reload: true});
-                })
-                .error(function (response) {
-                    if (response.detail == 'Invalid token.')
-                        $state.go('login');
-                })
-        };
-
     }]);
