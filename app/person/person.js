@@ -5,52 +5,42 @@ angular.module('myApp.person', [
     'myApp'
 ])
 
-
     .controller('PersonCtrl', function ($scope, $http, $cookies, $state, $stateParams) {
 
-        $scope.getUser = function () {
-            $http.get('http://127.0.0.1:8000/users/' + $stateParams.personId, {
+        $scope.getPoliceman = function () {
+            $http.get('http://127.0.0.1:3004/person/policeman/' + $stateParams.personId, {
                 headers: {
                     'Authorization': 'token ' + $cookies.get('Authorization'),
                     'Content-Type': 'application/json'
                 }
             })
                 .success(function (data) {
-                    $scope.person = {};
-                    $scope.person.name = data.username;
-                    $scope.person.id = data.id;
+                    console.log(data[0]);
+                    if (data.length <= 0) {
+                        alert("Wybrany użytkownik nie istnieje");
+                        $state.go('home');
+                    }
+                    else {
+                        $scope.person = data[0];
+                        $scope.person.data_urodzenia = new Date(Date.parse($scope.person.data_urodzenia)).toLocaleDateString();
+                        $http.get('http://127.0.0.1:3004/person/policeman_stuff/' + $scope.person.id_policjant, {
+                            headers: {
+                                'Authorization': 'token ' + $cookies.get('Authorization'),
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                            .success(function (data) {
+                                console.log(data);
+                                $scope.zasob = data;
+                            })
+                            .error(function () {
+                                alert("Nie można pozyskać zasobów");
+                            });
+                    }
                 })
                 .error(function () {
-                    alert("There is not such a user in database");
-                    $state.go('users');
+                    alert("Wybrany użytkownik nie istnieje");
+                    $state.go('home');
                 });
-        };
-
-        $scope.addToFriends = function (id) {
-            var r = confirm("Add user to your friendship list?");
-            if (r == true) {
-                var config = {
-                    headers: {
-                        'Authorization': 'token ' + $cookies.get('Authorization'),
-                        'Content-Type': 'application/json'
-                    }
-                };
-
-                var friendToAdd = {
-                    "user_two": id
-                };
-
-                $http.post('http://127.0.0.1:8000/friends/pending/add',
-                    friendToAdd,
-                    config
-                )
-                    .success(function () {
-                        alert("You have send invitation");
-                        $state.go('notification');
-                    })
-                    .error(function (response) {
-                        alert("Error!: " + response);
-                    })
-            }
         };
     });

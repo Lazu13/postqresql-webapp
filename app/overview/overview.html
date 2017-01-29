@@ -1,0 +1,68 @@
+<link href="games/games.css" rel="stylesheet">
+<link href="home/top.css" rel="stylesheet">
+
+<div ng-app="myApp.add" ng-controller="OverviewCtrl">
+    <div class="games-container container">
+        <h3><kbd>Przeglądaj</kbd></h3><br/>
+    </div>
+    <div class="games-container container">
+        <div class="panel panel-borderless">
+            <div class="panel-body">
+                <div class="col-md-12">
+
+                    <div class="rating col-md-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalA"
+                                aria-label="Left Align">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"> Osoby</span>
+                        </button>
+                        <div ng-include="'overview/people.html'"></div>
+                    </div>
+
+                    <div class="rating col-md-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalB"
+                                aria-label="Left Align">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"> Policjanci</span>
+                        </button>
+                        <div ng-include="'overview/policemen.html'"></div>
+                    </div>
+
+                    <div class="rating col-md-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalC"
+                                aria-label="Left Align">
+                            <span class="glyphicon glyphicon-wrench" aria-hidden="true"> Zasoby</span>
+                        </button>
+                        <div ng-include="'overview/zasob.html'"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="games-container container">
+        <div class="panel panel-borderless">
+            <div class="panel-body">
+
+                <div class="col-md-12">
+
+                    <div class="rating col-md-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalD"
+                                aria-label="Left Align">
+                            <span class="fa fa-bolt" aria-hidden="true"> Wykroczenia</span>
+                        </button>
+                        <div ng-include="'overview/offenses.html'"></div>
+                    </div>
+
+                    <div class="rating col-md-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalE"
+                                aria-label="Left Align">
+                            <span class="fa fa-bomb" aria-hidden="true"> Przestępstwa</span>
+                        </button>
+                        <div ng-include="'overview/crimes.html'"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

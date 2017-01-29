@@ -1,0 +1,120 @@
+<link href="games/games.css" rel="stylesheet">
+<link href="home/top.css" rel="stylesheet">
+
+<div ng-app="myApp.games" class="games-container container" ng-controller="PersonOCtrl"
+     ng-init="getPerson(); getOffenses(); getCrimes()">
+    <h3><kbd>Profil</kbd></h3><br/>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Dane osobowe: </h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-12">
+                <div class="category col-md-6">
+                    <h4>Imię: </h4>
+                    <h4>Nazwisko: </h4>
+                    <h4>Data urodzenia: </h4>
+                    <h4>Narodowść: </h4>
+                </div>
+                <div class="rating col-md-6">
+                    <h4 class="category-text-color">{{person.imie || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.nazwisko || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.data_urodzenia || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.narodowosc || 'notDefined'}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Adres: </h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-12">
+                <div class="category col-md-6">
+                    <h4>Kraj: </h4>
+                    <h4>Miasto: </h4>
+                    <h4>Ulica i numer: </h4>
+                    <h4>Kod pocztowy: </h4>
+                </div>
+                <div class="rating col-md-6">
+                    <h4 class="category-text-color">{{person.kraj || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.miasto || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.ulica || 'notDefined'}} {{person.numer}}</h4>
+                    <h4 class="category-text-color">{{person.kod_pocztowy || 'notDefined'}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Wykroczenia </h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-12" ng-repeat="thing in offenses">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="category col-md-6">
+                            <h4>Data wykroczenia: </h4>
+                            <h4>Zasada kodeks karny: </h4>
+                            <h4>Opis wykroczenia: </h4>
+                            <h4>Kara: </h4>
+                        </div>
+                        <div class="rating col-md-6">
+                            <h4 class="category-text-color">{{thing.data_wykroczenia || 'notDefined'}}</h4>
+                            <h4 class="category-text-color">{{thing.zasada_kodeks_karny || 'notDefined'}}</h4>
+                            <h4 class="category-text-color">{{thing.opis_wykroczenie|| 'notDefined'}}</h4>
+                            <h4 class="category-text-color">
+                                <div ng-show="thing.areszt_wykroczenie  != null">Areszt: {{thing.areszt_wykroczenie}}<br/></div>
+                                <div ng-show="thing.ograniczenie_wolnosci_wykroczenie != null">
+                                    Ograniczenie wolnosci: {{thing.ograniczenie_wolnosci_wykroczenie}}<br/>
+                                </div>
+                                <div ng-show="thing.grzywna_wykroczenie != null">{{thing.grzywna_wykroczenie}} zł <br/>
+                                </div>
+                                <div ng-show="thing.nagana_wykroczenie != null">Nagana</div>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Przestępstwa </h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-12" ng-repeat="thing in crimes">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="category col-md-6">
+                            <h4>Data przestępstwa: </h4>
+                            <h4>Zasada kodeks karny: </h4>
+                            <h4>Opis przestępstwa: </h4>
+                            <h4>Kara: </h4>
+                        </div>
+                        <div class="rating col-md-6">
+                            <h4 class="category-text-color">{{thing.data_przestepstwa || 'notDefined'}}</h4>
+                            <h4 class="category-text-color">{{thing.zasada_kodeks_karny || 'notDefined'}}</h4>
+                            <h4 class="category-text-color">{{thing.opis_przestepstwo || 'notDefined'}}</h4>
+                            <h4 class="category-text-color">
+
+                                <div ng-show="thing.areszt_przestepstwo  != null">Areszt: {{thing.areszt_przestepstwo}}<br/>
+                                </div>
+                                <div ng-show="thing.ograniczenie_wolnosci_przestepstwo != null">
+                                    Ograniczenie wolnosci: {{thing.ograniczenie_wolnosci_przestepstwo}}<br/>
+                                </div>
+                                <div ng-show="thing.grzywna_wykroczenie != null">{{thing.grzywna_wykroczenie}} zł <br/>
+                                </div>
+                                <div ng-show="thing.nagana_wykroczenie != null">Nagana</div>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

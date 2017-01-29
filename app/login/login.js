@@ -21,7 +21,7 @@ angular.module('myApp.login', [
                 }
             };
 
-            $http.post('http://127.0.0.1:3000/login',
+            $http.post('http://127.0.0.1:3004/login',
                 dataToSend,
                 config
             )

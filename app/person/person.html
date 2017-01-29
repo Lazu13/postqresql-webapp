@@ -1,19 +1,89 @@
 <link href="games/games.css" rel="stylesheet">
-<link href="home/top-games.css" rel="stylesheet">
+<link href="home/top.css" rel="stylesheet">
 
-<div ng-app="myApp.games" class="games-container container" ng-controller="PersonCtrl" ng-init="getUser()">
-    <h3><kbd>Invites</kbd></h3><br/>
+<div ng-app="myApp.games" class="games-container container" ng-controller="PersonCtrl" ng-init="getPoliceman()">
+    <h3><kbd>Profil</kbd></h3><br/>
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="col-sm-12">
-                <div class="category col-md-3">
-                    <h4>User name:</h4>
+                <div class="category col-md-6">
+                    <h4>Rodzaj służb: </h4>
+                    <h4>Ranga: </h4>
+                    <h4>Komisariat: </h4>
                 </div>
                 <div class="rating col-md-6">
-                    <h4 class="category-text-color">{{person.name || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.nazwa_rodzaj_sluzb || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.nazwa_rangi || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.nazwa_komisariat|| 'notDefined'}}</h4>
                 </div>
-                <div class="rating col-md-3">
-                    <h4><a ng-click="addToFriends(person.id)" class="glyphicon glyphicon-user"></a></h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Dane osobowe: </h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-12">
+                <div class="category col-md-6">
+                    <h4>Imię: </h4>
+                    <h4>Nazwisko: </h4>
+                    <h4>Data urodzenia: </h4>
+                    <h4>Narodowść: </h4>
+                </div>
+                <div class="rating col-md-6">
+                    <h4 class="category-text-color">{{person.imie || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.nazwisko || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.data_urodzenia || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.narodowosc || 'notDefined'}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Adres: </h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-12">
+                <div class="category col-md-6">
+                    <h4>Kraj: </h4>
+                    <h4>Miasto: </h4>
+                    <h4>Ulica i numer: </h4>
+                    <h4>Kod pocztowy: </h4>
+                </div>
+                <div class="rating col-md-6">
+                    <h4 class="category-text-color">{{person.kraj || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.miasto || 'notDefined'}}</h4>
+                    <h4 class="category-text-color">{{person.ulica || 'notDefined'}} {{person.numer}}</h4>
+                    <h4 class="category-text-color">{{person.kod_pocztowy || 'notDefined'}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Zasoby </h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-12" ng-repeat="thing in zasob">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                    <div class="category col-md-6">
+                        <h4>Kategoria zasobu: </h4>
+                        <h4>Zasób: </h4>
+                        <h4>Stan zasobu: </h4>
+                    </div>
+                    <div class="rating col-md-6">
+                        <h4 class="category-text-color">{{thing.nazwa_kategoria_zasob|| 'notDefined'}}</h4>
+                        <h4 class="category-text-color">{{thing.nazwa_zasob|| 'notDefined'}}</h4>
+                        <h4 class="category-text-color">{{thing.stan_zasob || 'notDefined'}}</h4>
+                    </div>
+
                 </div>
             </div>
         </div>

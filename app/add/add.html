@@ -1,0 +1,73 @@
+<link href="games/games.css" rel="stylesheet">
+<link href="home/top.css" rel="stylesheet">
+
+<div ng-app="myApp.add" ng-controller="AddCtrl">
+    <div class="games-container container">
+        <h3><kbd>Dodaj</kbd></h3><br/>
+    </div>
+    <div class="games-container container">
+        <div class="panel panel-borderless">
+            <div class="panel-body">
+                <div class="col-md-12">
+
+                    <div class="rating col-md-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal1"
+                                aria-label="Left Align">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"> Osoba</span>
+                        </button>
+                        <div ng-include="'add/person.html'"></div>
+                    </div>
+
+                    <div class="rating col-md-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"
+                                aria-label="Left Align">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"> Policjant</span>
+                        </button>
+                        <div ng-include="'add/policeman.html'"></div>
+                    </div>
+
+                    <div class="rating col-md-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal2"
+                                aria-label="Left Align">
+                            <div class="glyphicon glyphicon-user"></div>
+                            <span class="glyphicon glyphicon-wrench" aria-hidden="true"> Zasób-policjant</span>
+                        </button>
+                        <div ng-include="'add/policjant_zasob.html'"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="games-container container">
+        <div class="panel panel-borderless">
+            <div class="panel-body">
+                <div class="col-md-12">
+
+                    <div class="rating col-md-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal3"
+                                aria-label="Left Align">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"> Osoba</span>
+                        </button>
+                        <div ng-include="'add/person.html'"></div>
+                    </div>
+
+                    <div class="rating col-md-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal4"
+                                aria-label="Left Align">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"> Policjant</span>
+                        </button>
+                        <div ng-include="'add/policeman.html'"></div>
+                    </div>
+
+                    <div class="rating col-md-4">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal5"
+                                aria-label="Left Align">
+                            <span class="glyphicon glyphicon-wrench" aria-hidden="true"> Zasób</span>
+                        </button>
+                        <div ng-include="'add/zasob.html'"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

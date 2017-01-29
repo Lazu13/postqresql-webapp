@@ -1,0 +1,65 @@
+<div id="myModal" class="modal fade" ng-app="myApp.add" ng-controller="AddCtrl" role="dialog" ng-init="getRanga(); getRodzajSluzb(); getKomisariat()">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Dodaj policjanta</h4>
+            </div>
+            <div class="modal-body">
+                <form name='add_policeman' class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="id">ID osoby</label>
+                            <div class="controls">
+                                <input type="number" id="id" name="id" placeholder="" ng-model="newPoliceman.currentId" required
+                                       class="form-control inputdefault">
+                                <p class="help-block">ID osoby</p>
+                            </div>
+                        </div>
+
+
+                        <div class="control-group">
+                            <label class="control-label" for="title">Ranga</label>
+                            <div class="controls" id="title">
+                                <select class="selectpicker" ng-model="newPoliceman.currentRanga"
+                                        ng-options="ranga.nazwa_rangi for ranga in ranga" required>
+                                </select>
+                                <p class="help-block">Ranga</p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="rodzajSluzb">Rodzaj slużb</label>
+                            <div class="controls" id="rodzajSluzb">
+                                <select class="selectpicker" ng-model="newPoliceman.currentRodzajSluzb"
+                                        ng-options="rodzaj.nazwa_rodzaj_sluzb for rodzaj in rodzajSluzb" required>
+                                </select>
+                                <p class="help-block">Ranga</p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="komisariat">Komisariat</label>
+                            <div class="controls" id="komisariat">
+                                <select class="selectpicker" ng-model="newPoliceman.currentKomisariat"
+                                        ng-options="komisariat.nazwa_komisariat for komisariat in komisariat" required>
+                                </select>
+                                <p class="help-block">Komisariat</p>
+                            </div>
+                        </div>
+
+                        <span ng-show="add_policeman.$invalid" class="label label-danger">Required</span>
+                        <button class="btn btn-success" data-dismiss="modal" ng-click="addPoliceman()"
+                                ng-disabled="add_policeman.$invalid || add_policeman.$pending ">Dodaj
+                        </button>
+
+                        <br/>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+
+    </div>
+</div>

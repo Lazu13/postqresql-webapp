@@ -17,7 +17,7 @@ angular.module('myApp.home', [
         };
 
         $scope.getCrimes = function () {
-            $http.get('http://127.0.0.1:3000/top_three/crimes', {
+            $http.get('http://127.0.0.1:3004/top_three/crimes', {
                 headers: {
                     'Authorization': 'token ' + $cookies.get('Authorization'),
                     'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ angular.module('myApp.home', [
         };
 
         $scope.getOffenses = function () {
-            $http.get('http://127.0.0.1:3000/top_three/offenses', {
+            $http.get('http://127.0.0.1:3004/top_three/offenses', {
                 headers: {
                     'Authorization': 'token ' + $cookies.get('Authorization'),
                     'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ angular.module('myApp.home', [
         };
 
         $scope.getPolicemen = function () {
-            return $http.get('http://127.0.0.1:3000/top_three/policemen', {
+            return $http.get('http://127.0.0.1:3004/top_three/policemen', {
                 headers: {
                     'Authorization': 'token ' + $cookies.get('Authorization'),
                     'Content-Type': 'application/json'

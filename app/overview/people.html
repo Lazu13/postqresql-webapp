@@ -1,0 +1,38 @@
+<link href="home/top.css" rel="stylesheet">
+
+<div id="myModalA" class="modal fade" ng-app="myApp.overview" ng-controller="OverviewCtrl" role="dialog"
+     ng-init="getPeople()">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Osoby</h4>
+            </div>
+            <div class="modal-body">
+                <div ng-repeat="sample in people">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="col-sm-12">
+                                <div class="category col-md-3">
+                                    <h6>Imie i nazwisko</h6>
+                                </div>
+                                <div class="rating col-md-6">
+                                    <h4 class="category-text-color">{{sample.imie}} {{sample.nazwisko}}</h4>
+                                </div>
+                                <div class="category col-md-3">
+                                    <p class="btn-add">
+
+                                    </p>
+                                    <div ng-click="closeModalA()" ng-include="'components/more-details.html'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+
+    </div>
+</div>

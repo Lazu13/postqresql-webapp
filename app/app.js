@@ -8,7 +8,6 @@ angular.module('myApp', [
     'myApp.admin',
     'myApp.login',
     'myApp.logout',
-    'myApp.notification',
     'myApp.user_profile',
     'myApp.games',
     'myApp.game',
@@ -17,6 +16,9 @@ angular.module('myApp', [
     'myApp.game_lib',
     'myApp.friends',
     'myApp.person',
+    'myApp.personO',
+    'myApp.add',
+    'myApp.overview',
     'angular-input-stars',
     'ui.validate'
 ])
@@ -72,9 +74,10 @@ angular.module('myApp', [
                 }
 
                 var self = this;
-                $http.get('http://127.0.0.1:8000/user', {
+                $http.get('http://127.0.0.1:3004/user', {
                     headers: {
                         'Authorization': 'token ' + $cookies.get('Authorization'),
+                        'Role': $cookies.get('Roles'),
                         'Content-Type': 'application/json'
                     }
                 })
@@ -211,6 +214,23 @@ angular.module('myApp', [
             controller: 'PersonCtrl'
         };
 
+        var personO = {
+            name: 'personO',
+            url: '/personO/{personId}',
+            data: {
+                roles: []
+            },
+            resolve: {
+                authorize: ['authorization',
+                    function (authorization) {
+                        return authorization.authorize();
+                    }
+                ]
+            },
+            templateUrl: 'person/personO.html',
+            controller: 'PersonOCtrl'
+        };
+
         var favs = {
             name: 'favs',
             url: '/favs',
@@ -245,6 +265,27 @@ angular.module('myApp', [
             controller: 'GameLibCtrl'
         };
 
+        var add = {
+            name: 'add',
+            url: '/add',
+            data: {
+                roles: []
+            },
+            templateUrl: 'add/add.html',
+            controller: 'AddCtrl'
+        };
+
+        var overview = {
+            name: 'overview',
+            url: '/overview',
+            data: {
+                roles: []
+            },
+            templateUrl: 'overview/overview.html',
+            controller: 'OverviewCtrl'
+        };
+
+
         var friends = {
             name: 'friends',
             url: '/friends',
@@ -260,23 +301,6 @@ angular.module('myApp', [
             },
             templateUrl: 'friends/friends.html',
             controller: 'FriendsCtrl'
-        };
-
-        var notification = {
-            name: 'notification',
-            url: '/notifications/',
-            data: {
-                roles: []
-            },
-            resolve: {
-                authorize: ['authorization',
-                    function (authorization) {
-                        return authorization.authorize();
-                    }
-                ]
-            },
-            templateUrl: 'notification/notification.html',
-            controller: 'NotificationCtrl'
         };
 
 
@@ -325,15 +349,18 @@ angular.module('myApp', [
         $stateProvider.state(games);
         $stateProvider.state(game);
 
+        $stateProvider.state(add);
+        $stateProvider.state(overview);
+
         $stateProvider.state(users);
         $stateProvider.state(friends);
         $stateProvider.state(person);
+        $stateProvider.state(personO);
         $stateProvider.state(favs);
         $stateProvider.state(game_lib);
 
         $stateProvider.state(login);
         $stateProvider.state(logout);
-        $stateProvider.state(notification);
         $stateProvider.state(user_profile);
     }
     ])
