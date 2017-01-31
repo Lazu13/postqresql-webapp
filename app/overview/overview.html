@@ -1,4 +1,4 @@
-<link href="games/games.css" rel="stylesheet">
+<link href="components/components.css" rel="stylesheet">
 <link href="home/top.css" rel="stylesheet">
 
 <div ng-app="myApp.add" ng-controller="OverviewCtrl">
@@ -18,7 +18,8 @@
                         <div ng-include="'overview/people.html'"></div>
                     </div>
 
-                    <div class="rating col-md-4">
+                    <div class="rating col-md-4"
+                         ng-show="principal.isAuthenticated() == true && principal.isInAnyRole(['admin', 'pracownik']) == true">
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalB"
                                 aria-label="Left Align">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"> Policjanci</span>
@@ -26,7 +27,8 @@
                         <div ng-include="'overview/policemen.html'"></div>
                     </div>
 
-                    <div class="rating col-md-4">
+                    <div class="rating col-md-4"
+                         ng-show="principal.isAuthenticated() == true && principal.isInAnyRole(['admin', 'pracownik', 'policjant']) == true">
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalC"
                                 aria-label="Left Align">
                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"> Zasoby</span>
@@ -44,7 +46,8 @@
 
                 <div class="col-md-12">
 
-                    <div class="rating col-md-4">
+                    <div class="rating col-md-4"
+                         ng-show="principal.isAuthenticated() == true && principal.isInAnyRole(['admin', 'pracownik']) == true">
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalD"
                                 aria-label="Left Align">
                             <span class="fa fa-bolt" aria-hidden="true"> Wykroczenia</span>
@@ -52,7 +55,8 @@
                         <div ng-include="'overview/offenses.html'"></div>
                     </div>
 
-                    <div class="rating col-md-4">
+                    <div class="rating col-md-4"
+                         ng-show="principal.isAuthenticated() == true && principal.isInAnyRole(['admin', 'pracownik']) == true">
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalE"
                                 aria-label="Left Align">
                             <span class="fa fa-bomb" aria-hidden="true"> Przestępstwa</span>

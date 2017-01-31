@@ -13,6 +13,7 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="category col-md-6">
+                                <h6>ID przestepstwo: </h6>
                                 <h6>Data przestepstwa: </h6>
                                 <h6>Zasada kodeks karny: </h6>
                                 <h6>Opis przestepstwa: </h6>
@@ -21,17 +22,26 @@
                                 <h6>Kara: </h6>
                             </div>
                             <div class="rating col-md-6">
+                                <h6 class="category-text-color">{{thing.id_przestepstwo|| 'notDefined'}}</h6>
                                 <h6 class="category-text-color">{{thing.data_przestepstwa || 'notDefined'}}</h6>
                                 <h6 class="category-text-color">{{thing.zasada_kodeks_karny || 'notDefined'}}</h6>
                                 <h6 class="category-text-color">{{thing.opis_przestepstwo|| 'notDefined'}}</h6>
-                                <h6 class="category-text-color">{{thing.kraj}}, {{thing.miasto}}, {{thing.ulica}} {{thing.numer}}</h6>
-                                <h6 class="category-text-color"> {{thing.dane_policjant[0].imie}} {{thing.dane_policjant[0].nazwisko}}</h6>
+                                <h6 class="category-text-color">{{thing.kraj}}, {{thing.miasto}}, {{thing.ulica}}
+                                    {{thing.numer}}</h6>
+                                <h6 class="category-text-color"> {{thing.dane_policjant[0].imie}}
+                                    {{thing.dane_policjant[0].nazwisko}}</h6>
                                 <h6 class="category-text-color">
-                                    <div ng-show="thing.areszt_przestepstwo != null">Areszt: {{thing.areszt_przestepstwo}}<br/></div>
+                                    <div ng-show="thing.areszt_przestepstwo != null">Areszt:
+                                        {{thing.areszt_przestepstwo}}<br/> {{thing.nazwa_zaklad_karny}} <br/>
+                                        {{thing.termin_od_przestepstwo }} - {{thing.termin_do_przestepstwo }}
+                                    </div>
                                     <div ng-show="thing.ograniczenie_wolnosci_przestepstwa != null">
                                         Ograniczenie wolnosci: {{thing.ograniczenie_wolnosci_przestepstwo}}<br/>
+                                        {{thing.nazwa_zaklad_karny}} <br/> {{thing.termin_od_przestepstwo }} -
+                                        {{thing.termin_do_przestepstwo }}
                                     </div>
-                                    <div ng-show="thing.grzywna_przestepstwo != null">{{thing.grzywna_przestepstwo}} zł <br/>
+                                    <div ng-show="thing.grzywna_przestepstwo != null">{{thing.grzywna_przestepstwo}} zł
+                                        <br/>
                                     </div>
                                     <div ng-show="thing.nagana_przestepstwo != null">Nagana</div>
                                 </h6>

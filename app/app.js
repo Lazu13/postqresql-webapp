@@ -5,16 +5,8 @@ angular.module('myApp', [
     'ngResource',
     'ngCookies',
     'myApp.home',
-    'myApp.admin',
     'myApp.login',
     'myApp.logout',
-    'myApp.user_profile',
-    'myApp.games',
-    'myApp.game',
-    'myApp.users',
-    'myApp.favs',
-    'myApp.game_lib',
-    'myApp.friends',
     'myApp.person',
     'myApp.personO',
     'myApp.add',
@@ -35,7 +27,8 @@ angular.module('myApp', [
             },
 
             isAuthenticated: function () {
-                return $cookies.get('Authorization');
+                if($cookies.get('Authorization') != undefined)
+                    return true
             },
 
             isInRole: function (role) {
@@ -137,66 +130,6 @@ angular.module('myApp', [
             controller: 'HomeCtrl'
         };
 
-
-        var game = {
-            name: 'game',
-            url: '/game/{gameId}',
-            data: {
-                roles: []
-            },
-            resolve: {
-                authorize: ['authorization',
-                    function (authorization) {
-                        return authorization.authorize();
-                    }
-                ]
-            },
-            templateUrl: 'game/game.html',
-            controller: 'GameCtrl'
-        };
-
-        var games = {
-            name: 'games',
-            url: '/games',
-            templateUrl: 'games/games.html',
-            controller: 'GamesCtrl'
-        };
-
-
-        var users = {
-            name: 'users',
-            url: '/users',
-            data: {
-                roles: []
-            },
-            resolve: {
-                authorize: ['authorization',
-                    function (authorization) {
-                        return authorization.authorize();
-                    }
-                ]
-            },
-            templateUrl: 'users/users.html',
-            controller: 'UsersCtrl'
-        };
-
-        var user_profile = {
-            name: 'user_profile',
-            url: '/user_profile',
-            data: {
-                roles: []
-            },
-            resolve: {
-                authorize: ['authorization',
-                    function (authorization) {
-                        return authorization.authorize();
-                    }
-                ]
-            },
-            templateUrl: 'user_profile/user_profile.html',
-            controller: 'UserProfileCtrl'
-        };
-
         var person = {
             name: 'person',
             url: '/person/{personId}',
@@ -231,45 +164,18 @@ angular.module('myApp', [
             controller: 'PersonOCtrl'
         };
 
-        var favs = {
-            name: 'favs',
-            url: '/favs',
-            data: {
-                roles: []
-            },
-            resolve: {
-                authorize: ['authorization',
-                    function (authorization) {
-                        return authorization.authorize();
-                    }
-                ]
-            },
-            templateUrl: 'favs/favs.html',
-            controller: 'FavsCtrl'
-        };
-
-        var game_lib = {
-            name: 'game_lib',
-            url: '/game_lib',
-            data: {
-                roles: []
-            },
-            resolve: {
-                authorize: ['authorization',
-                    function (authorization) {
-                        return authorization.authorize();
-                    }
-                ]
-            },
-            templateUrl: 'game_lib/game_lib.html',
-            controller: 'GameLibCtrl'
-        };
-
         var add = {
             name: 'add',
             url: '/add',
             data: {
-                roles: []
+                roles: ['admin', 'policjant', 'pracownik']
+            },
+            resolve: {
+                authorize: ['authorization',
+                    function (authorization) {
+                        return authorization.authorize();
+                    }
+                ]
             },
             templateUrl: 'add/add.html',
             controller: 'AddCtrl'
@@ -283,24 +189,6 @@ angular.module('myApp', [
             },
             templateUrl: 'overview/overview.html',
             controller: 'OverviewCtrl'
-        };
-
-
-        var friends = {
-            name: 'friends',
-            url: '/friends',
-            data: {
-                roles: []
-            },
-            resolve: {
-                authorize: ['authorization',
-                    function (authorization) {
-                        return authorization.authorize();
-                    }
-                ]
-            },
-            templateUrl: 'friends/friends.html',
-            controller: 'FriendsCtrl'
         };
 
 
@@ -326,42 +214,16 @@ angular.module('myApp', [
             controller: 'LogoutCtrl'
         };
 
-        var admin = {
-            name: 'admin',
-            url: '/admin',
-            data: {
-                roles: ['admin']
-            },
-            resolve: {
-                authorize: ['authorization',
-                    function (authorization) {
-                        return authorization.authorize();
-                    }
-                ]
-            },
-            templateUrl: 'admin/admin.html',
-            controller: 'AdminCtrl'
-        };
-
         $stateProvider.state(home);
-        $stateProvider.state(admin);
-
-        $stateProvider.state(games);
-        $stateProvider.state(game);
 
         $stateProvider.state(add);
         $stateProvider.state(overview);
 
-        $stateProvider.state(users);
-        $stateProvider.state(friends);
         $stateProvider.state(person);
         $stateProvider.state(personO);
-        $stateProvider.state(favs);
-        $stateProvider.state(game_lib);
 
         $stateProvider.state(login);
         $stateProvider.state(logout);
-        $stateProvider.state(user_profile);
     }
     ])
 

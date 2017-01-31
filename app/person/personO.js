@@ -43,6 +43,8 @@ angular.module('myApp.personO', [
                     $scope.offenses = data;
                     $scope.offenses.forEach(function (item) {
                         item.data_wykroczenia = new Date(Date.parse(item.data_wykroczenia)).toLocaleDateString();
+                        item.termin_od_wykroczenie = new Date(Date.parse(item.termin_od_wykroczenie)).toLocaleDateString();
+                        item.termin_do_wykroczenie = new Date(Date.parse(item.termin_do_wykroczenie)).toLocaleDateString();
                     });
 
 
@@ -65,6 +67,8 @@ angular.module('myApp.personO', [
                     $scope.crimes = data;
                     $scope.crimes.forEach(function (item) {
                         item.data_przestepstwa = new Date(Date.parse(item.data_przestepstwa)).toLocaleDateString();
+                        item.termin_od_przestepstwo= new Date(Date.parse(item.termin_od_przestepstwo)).toLocaleDateString();
+                        item.termin_do_przestepstwo= new Date(Date.parse(item.termin_do_przestepstwo)).toLocaleDateString();
                     });
 
                 })

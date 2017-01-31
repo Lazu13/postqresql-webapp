@@ -68,6 +68,8 @@ angular.module('myApp.overview', [
                     $scope.offenses = data;
                     $scope.offenses.forEach(function (item) {
                         item.data_wykroczenia = new Date(Date.parse(item.data_wykroczenia)).toLocaleDateString();
+                        item.termin_od_wykroczenie = new Date(Date.parse(item.termin_od_wykroczenie)).toLocaleDateString();
+                        item.termin_do_wykroczenie = new Date(Date.parse(item.termin_do_wykroczenie)).toLocaleDateString();
                         $http.get('http://127.0.0.1:3004/person/' + item.id_osoba_policjant, {
                             headers: {
                                 'Authorization': 'token ' + $cookies.get('Authorization'),
@@ -99,7 +101,9 @@ angular.module('myApp.overview', [
                 .success(function (data) {
                     $scope.crimes = data;
                     $scope.crimes.forEach(function (item) {
-                        item.data_przestepstwa= new Date(Date.parse(item.data_przestepstwa)).toLocaleDateString();
+                        item.data_przestepstwa = new Date(Date.parse(item.data_przestepstwa)).toLocaleDateString();
+                        item.termin_od_przestepstwo = new Date(Date.parse(item.termin_od_przestepstwo)).toLocaleDateString();
+                        item.termin_do_przestepstwo = new Date(Date.parse(item.termin_do_przestepstwo)).toLocaleDateString();
                         $http.get('http://127.0.0.1:3004/person/' + item.id_osoba_policjant, {
                             headers: {
                                 'Authorization': 'token ' + $cookies.get('Authorization'),

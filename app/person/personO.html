@@ -1,4 +1,4 @@
-<link href="games/games.css" rel="stylesheet">
+<link href="components/components.css" rel="stylesheet">
 <link href="home/top.css" rel="stylesheet">
 
 <div ng-app="myApp.games" class="games-container container" ng-controller="PersonOCtrl"
@@ -67,9 +67,13 @@
                             <h4 class="category-text-color">{{thing.zasada_kodeks_karny || 'notDefined'}}</h4>
                             <h4 class="category-text-color">{{thing.opis_wykroczenie|| 'notDefined'}}</h4>
                             <h4 class="category-text-color">
-                                <div ng-show="thing.areszt_wykroczenie  != null">Areszt: {{thing.areszt_wykroczenie}}<br/></div>
+                                <div ng-show="thing.areszt_wykroczenie  != null">Areszt:
+                                    {{thing.areszt_wykroczenie}}<br/>
+                                    {{thing.termin_od_wykroczenie}} - {{thing.termin_do_wykroczenie }}
+                                </div>
                                 <div ng-show="thing.ograniczenie_wolnosci_wykroczenie != null">
                                     Ograniczenie wolnosci: {{thing.ograniczenie_wolnosci_wykroczenie}}<br/>
+                                    {{thing.termin_od_wykroczenie}} - {{thing.termin_do_wykroczenie }}
                                 </div>
                                 <div ng-show="thing.grzywna_wykroczenie != null">{{thing.grzywna_wykroczenie}} zł <br/>
                                 </div>
@@ -102,10 +106,13 @@
                             <h4 class="category-text-color">{{thing.opis_przestepstwo || 'notDefined'}}</h4>
                             <h4 class="category-text-color">
 
-                                <div ng-show="thing.areszt_przestepstwo  != null">Areszt: {{thing.areszt_przestepstwo}}<br/>
+                                <div ng-show="thing.areszt_przestepstwo  != null">Areszt:
+                                    {{thing.areszt_przestepstwo}}<br/>
+                                    {{thing.termin_od_przestepstwo}} - {{thing.termin_do_przestepstwo}}
                                 </div>
                                 <div ng-show="thing.ograniczenie_wolnosci_przestepstwo != null">
                                     Ograniczenie wolnosci: {{thing.ograniczenie_wolnosci_przestepstwo}}<br/>
+                                    {{thing.termin_od_przestepstwo}} - {{thing.termin_do_przestepstwo}}
                                 </div>
                                 <div ng-show="thing.grzywna_wykroczenie != null">{{thing.grzywna_wykroczenie}} zł <br/>
                                 </div>

@@ -1,53 +1,66 @@
-<div id="myModal1" class="modal fade" ng-app="myApp.add" ng-controller="AddCtrl" role="dialog" >
+<div id="myModal4" class="modal fade" ng-app="myApp.add" ng-controller="AddCtrl" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Dodaj osobe</h4>
+                <h4 class="modal-title">Dodaj przestępstwo</h4>
             </div>
             <div class="modal-body">
-                <form name='add_person' class="form-horizontal">
+                <form name='add_crime_pun' class="form-horizontal">
                     <fieldset>
                         <div class="control-group">
-                            <label class="control-label" for="name">Imie</label>
-                            <div class="controls">
-                                <input type="text" id="name" name="name" placeholder="" ng-model="person.name" required
+                            <label class="control-label" for="rule">Zasada</label>
+                            <div class="controls" id="title">
+                                <input type="text" id="rule" name="rule" placeholder="" ng-model="crime.rule" required
                                        class="form-control inputdefault">
-                                <p class="help-block">Imie</p>
+                                <p class="help-block">Zasada Kodeks Karny</p>
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="surname">Nazwisko</label>
+                            <label class="control-label" for="opis">Opis </label>
                             <div class="controls">
-                                <input type="text" id="surname" name="surname" placeholder="" ng-model="person.surname" required
+                                <input type="text" id="opis" name="opis" placeholder="" ng-model="crime.opis" required
                                        class="form-control inputdefault">
-                                <p class="help-block">Nazwisko</p>
+                                <p class="help-block">Opis przewinienia</p>
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="date">Data urodzenia</label>
+                            <label class="control-label" for="grzywna">Grzywna </label>
                             <div class="controls">
-                                <input type="date" id="date" name="date" placeholder="" ng-model="person.date" required
+                                <input type="number" id="grzywna" name="grzywna" placeholder="" ng-model="crime.grzywna"
                                        class="form-control inputdefault">
-                                <p class="help-block">Data format: YYYY.MM.DD</p>
+                                <p class="help-block">Grzywna</p>
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="nationality">Narodowość:</label>
+                            <label class="control-label" for="wiezienie">Wiezienie </label>
                             <div class="controls">
-                                <input type="text" id="nationality" name="nationality" placeholder="" ng-model="person.nationality" required
+                                <input type="text" id="wiezienie" name="wiezienie" placeholder=""
+                                       ng-model="crime.wiezienie"
                                        class="form-control inputdefault">
-                                <p class="help-block">Narodowość</p>
+                                <p class="help-block">Czas do spędzenia w zakładzie karnym. TYP INTERVAL!! przykład : 10
+                                    months</p>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="date">Data przestępstwa</label>
+                            <div class="controls">
+                                <input type="date" id="date" name="country" placeholder="" ng-model="crime.date"
+                                       required
+                                       class="form-control inputdefault">
+                                <p class="help-block">Data przestępstwa</p>
                             </div>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for="country">Kraj</label>
                             <div class="controls">
-                                <input type="text" id="country" name="country" placeholder="" ng-model="person.address.country" required
+                                <input type="text" id="country" name="country" placeholder="" ng-model="address.country"
+                                       required
                                        class="form-control inputdefault">
                                 <p class="help-block">Kraj</p>
                             </div>
@@ -56,7 +69,7 @@
                         <div class="control-group">
                             <label class="control-label" for="city">Miasto</label>
                             <div class="controls">
-                                <input type="text" id="city" name="city" placeholder="" ng-model="person.address.city" required
+                                <input type="text" id="city" name="city" placeholder="" ng-model="address.city" required
                                        class="form-control inputdefault">
                                 <p class="help-block">Miasto</p>
                             </div>
@@ -65,7 +78,8 @@
                         <div class="control-group">
                             <label class="control-label" for="street">Ulica</label>
                             <div class="controls">
-                                <input type="text" id="street" name="street" placeholder="" ng-model="person.address.street" required
+                                <input type="text" id="street" name="street" placeholder="" ng-model="address.street"
+                                       required
                                        class="form-control inputdefault">
                                 <p class="help-block">Ulica</p>
                             </div>
@@ -74,7 +88,8 @@
                         <div class="control-group">
                             <label class="control-label" for="number">Numer</label>
                             <div class="controls">
-                                <input type="number" id="number" name="number" placeholder="" ng-model="person.address.number" required
+                                <input type="number" id="number" name="number" placeholder="" ng-model="address.number"
+                                       required
                                        class="form-control inputdefault">
                                 <p class="help-block">Numer</p>
                             </div>
@@ -83,16 +98,17 @@
                         <div class="control-group">
                             <label class="control-label" for="post_code">Kod pocztowy</label>
                             <div class="controls">
-                                <input type="text" id="post_code" name="post_code" placeholder="" ng-model="person.address.post_code" required
-                                       class="form-control inputdefault" maxlength="5">
+                                <input type="text" id="post_code" name="post_code" placeholder=""
+                                       ng-model="address.post_code" required
+                                       class="form-control inputdefault">
                                 <p class="help-block">Kod pocztowy</p>
                             </div>
                         </div>
 
 
-                        <span ng-show="add_person.$invalid" class="label label-danger">Required</span>
-                        <button class="btn btn-success" data-dismiss="modal" ng-click="addPerson()"
-                                ng-disabled="add_person.$invalid || add_person.$pending ">Dodaj
+                        <span ng-show="add_crime_pun.$invalid" class="label label-danger">Required</span>
+                        <button class="btn btn-success" data-dismiss="modal" ng-click="addCrimePun()"
+                                ng-disabled="add_crime_pun.$invalid || add_crime_pun.$pending ">Dodaj
                         </button>
 
                         <br/>
