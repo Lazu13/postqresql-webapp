@@ -134,7 +134,7 @@ angular.module('myApp', [
             name: 'person',
             url: '/person/{personId}',
             data: {
-                roles: []
+                roles: ['admin', 'pracownik']
             },
             resolve: {
                 authorize: ['authorization',
